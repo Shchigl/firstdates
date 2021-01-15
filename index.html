@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Карта перших побачень</title>
-<link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/shchigl/firstdates/main/png/favicon.png"> <!-- ЗАМЕНИТЬ ФАВИКОН!!! -->
+<link rel="shortcut icon" type="image/x-icon" href="file:///C:/Users/shchigl/Desktop/First%20Dates%20Map/png/favicon.png"> <!-- ЗАМЕНИТЬ ФАВИКОН!!! -->
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
@@ -16,8 +16,8 @@
     <meta property="og:description" content="Історії ваших перших побачень у Києві" />
     <meta property="og:url" content="https://shchigl.github.io/firstdates/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://github.com/shchigl/firstdates/blob/main/jpg/og-image.jpg?raw=true" />
-    <meta property="og:image:secure_url" content="https://github.com/shchigl/firstdates/blob/main/jpg/og-image.jpg?raw=true" />
+    <meta property="og:image" content="http://dating.a3.kyiv.ua/og-image.jpg" />
+    <meta property="og:image:secure_url" content="http://dating.a3.kyiv.ua/og-image.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="628" />
@@ -38,7 +38,7 @@
 }
 
 	.link-btn .button {
-			background: url("https://github.com/shchigl/firstdates/blob/main/png/form_map_small.png?raw=true") no-repeat center center;
+			background: url("file:///C:/Users/shchi/Desktop/form_map.svg") no-repeat center center;
 			font: bold 14px/20px Helvetica;
 			cursor: pointer;
 			color: black;
@@ -82,7 +82,7 @@
 }
 
 	.fb-btn .button {
-			background: url("https://github.com/shchigl/firstdates/blob/main/png/facebook_small.png?raw=true") no-repeat center center;
+			background: url("file:///C:/Users/shchi/Desktop/facebook.svg") no-repeat center center;
 			font: bold 14px/20px Helvetica;
 			cursor: pointer;
 			color: black;
@@ -126,7 +126,7 @@
 }
 
 	.inst-btn .button {
-			background: url("https://github.com/shchigl/firstdates/blob/main/png/instagram_small.png?raw=true") no-repeat center center;
+			background: url("file:///C:/Users/shchi/Desktop/instagram.svg") no-repeat center center;
 			font: bold 14px/20px Helvetica;
 			cursor: pointer;
 			color: black;
@@ -170,7 +170,7 @@
 }
 
 	.page-btn .button {
-			background: url("https://github.com/shchigl/firstdates/blob/main/png/globe_small.png?raw=true") no-repeat center center;
+			background: url("file:///C:/Users/shchi/Desktop/globe.svg") no-repeat center center;
 			font: bold 14px/20px Noto Sans;
 			cursor: pointer;
 			color: black;
@@ -332,6 +332,20 @@ font: bold 16px/30px Noto Sans;
 margin: 0 16px 0px;
 font: 16px/22px Noto Sans;
 }
+
+.sidenav h2 {
+font: bold 16px/22px Noto Sans;
+margin: 0 50px 0;
+}
+
+.sidenav .sliderr {
+margin: 5px 50px 0;
+}
+
+.sidenav .active-years {
+margin: 5px 50px 0;
+}
+
 </style>
 
 <style>
@@ -342,7 +356,7 @@ font: 16px/22px Noto Sans;
 .sidenav-btn .button {
 			font: bold 16px/20px Noto Sans;
 			cursor: pointer;
-			color: #d8608e;
+			color: #D8608E;
 			background-color: #ffffff;
 			position: absolute;
 			top: 15px;
@@ -376,13 +390,22 @@ font: 16px/22px Noto Sans;
 	<input id='locations' type="radio" name="radio" value='locations' >
 	<span class="checkmark"></span>
 	</label>
-	<hr style="margin-top:30px;margin-left:16px;margin-right:16px;height:1px;color:black;background-color:black;">
+	<label class="container">Тренди по роках
+	<input id='slider' type="radio" name="radio" value='slider' >
+	<span class="checkmark"></span>
+	</label>
+	<div class='session' id='sliderbar'>
+	<h2>Часовий проміжок</h2>
+	<input class='sliderr' id='sliderr' class='row' type='range' min='1' max='5' step='1' value='0' />
+	<label class='active-years' id='active-years'>до 2000 року</label>
+	</div>
+	<hr style="margin-top:15px;margin-left:16px;margin-right:16px;height:1px;color:black;background-color:black;">
 	<h3>Про наш проект</h3>
 	<h4>Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба Риба</h4>
 </div>
 
 <div class="sidenav-btn">
-<button id="SidenavButton" class="button" onclick="openNav()">Шари даних &#9776 </button>
+<button id="SidenavButton" class="button" onclick="openNav()">Шари даних</button>
 </div>
 
 
@@ -445,22 +468,21 @@ function closeNav() {
 	map.addControl(nav, 'bottom-left');
 	
 	
-	
-	map.on('load', function () {
-		map.addSource('dates', {
+			
+		map.on('load', function () {
+		map.addSource('dates-nocom', {
 			type: 'vector',
-			url: 'mapbox://firstdates.79f3ge6u'
+			url: 'mapbox://firstdates.1239tglb'
 			});
 		map.addLayer({
-			'id': 'dates',
+			'id': 'dates-nocom',
 			'type': 'circle',
-			'source': 'dates',
-			'source-layer': 'dates-5wndmx',
+			'source': 'dates-nocom',
+			'source-layer': 'dates-nocomments-dhbrjl',
 			'paint': {
-				"circle-color": "hsl(328, 95%, 49%)",
+				"circle-color": "#6699cc",
                 "circle-stroke-color": "hsl(0, 12%, 100%)",
-                "circle-stroke-opacity": 0.5,
-                "circle-stroke-width": 2,
+                "circle-stroke-opacity": 0,
                 "circle-radius": [
                     "interpolate",
                     ["linear"],
@@ -468,11 +490,43 @@ function closeNav() {
                     0,
                     2,
                     10,
+                    4,
+                    22,
+                    14
+                ],
+                "circle-opacity": 0.7
+		},
+		});
+		});
+		
+		
+	
+	map.on('load', function () {
+		map.addSource('dates-com', {
+			type: 'vector',
+			url: 'mapbox://firstdates.d30k68f3'
+			});
+		map.addLayer({
+			'id': 'dates-com',
+			'type': 'circle',
+			'source': 'dates-com',
+			'source-layer': 'dates-comments-6vp7fq',
+			'paint': {
+				"circle-color": "#33cccc",
+                "circle-stroke-color": "hsl(0, 12%, 100%)",
+                "circle-stroke-opacity": 0,
+                "circle-radius": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    3,
+                    10,
                     5,
                     22,
-                    10
+                    15
                 ],
-                "circle-blur": 0.3
+                "circle-opacity": 0.7
 		},
 		});
 		});
@@ -528,8 +582,9 @@ function closeNav() {
 			'source-layer': 'locations-6you4k',
 			'layout': {'visibility': 'none'},
 			'paint': {
-				"fill-color": "hsla(338, 98%, 42%, 0.31)",
-                "fill-outline-color": "hsla(0, 0%, 0%, 0)"
+				"fill-color": "#00ff99",
+                "fill-outline-color": "hsla(0, 0%, 0%, 0)",
+                "fill-opacity": 0.3
 		},
 		});
 		});
@@ -557,13 +612,81 @@ function closeNav() {
                     22,
                     3
                 ],
-                "line-opacity": 0.6,
-                "line-color": "hsl(346, 72%, 49%)"
+                "line-opacity": 0.7,
+                "line-color": "#339999"
 		},
 		});
 		});
 		
 		
+		
+		map.on('load', function () {
+		map.addSource('slider', {
+			type: 'vector',
+			url: 'mapbox://firstdates.4kqo9pnr'
+			});
+		map.addLayer({
+			'id': 'slider',
+			'type': 'circle',
+			'source': 'slider',
+			'source-layer': 'slider-ca8dny',
+			'layout': {'visibility': 'none'},
+			'paint': {
+				"circle-color": "#cc0066",
+                "circle-stroke-color": "hsl(0, 12%, 100%)",
+                "circle-stroke-opacity": 0,
+                "circle-radius": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    4,
+                    10,
+                    6,
+                    22,
+                    16
+                ],
+                "circle-opacity": 0.7
+		},
+		filter: ['==', ['number', ['get', 'years']], 1]
+		});
+		});
+		
+		
+
+		// update hour filter when the slider is dragged
+        document
+          .getElementById('sliderr')
+          .addEventListener('input', function (e) {
+            var hour = parseInt(e.target.value);
+            // update the map
+            map.setFilter('slider', [
+              '==',
+              ['number', ['get', 'years']],
+              hour
+            ]);
+
+
+
+            // update text in the UI
+            document.getElementById('active-years').textContent = hours[hour];
+          });
+
+
+
+		var hours = [
+		'none',
+		'до 2000 року',
+		'2000 - 2010 роки',
+		'2011 - 2014 роки',
+		'2015 - 2018 роки',
+		'після 2018 року'
+		];
+
+
+
+
+	
 		
 	var layerList = document.getElementById('mySidenav');
 	var inputs = layerList.getElementsByTagName('input');
@@ -571,24 +694,39 @@ function closeNav() {
 	function switchLayer(layer) {
 	var layerId = layer.target.id;
 		if (layerId == 'dates') {
-		map.setLayoutProperty('dates', 'visibility', 'visible');
+		map.setLayoutProperty('dates-com', 'visibility', 'visible');
+		map.setLayoutProperty('dates-nocom', 'visibility', 'visible');
 		map.setLayoutProperty('heatmap', 'visibility', 'none');
 		map.setLayoutProperty('locations', 'visibility', 'none');
 		map.setLayoutProperty('locations-line', 'visibility', 'none');
+		map.setLayoutProperty('slider', 'visibility', 'none');
 	}
 	
 		if (layerId == 'heatmap') {
 		map.setLayoutProperty('heatmap', 'visibility', 'visible');
-		map.setLayoutProperty('dates', 'visibility', 'none');
+		map.setLayoutProperty('dates-com', 'visibility', 'none');
+		map.setLayoutProperty('dates-nocom', 'visibility', 'none');
 		map.setLayoutProperty('locations', 'visibility', 'none');
 		map.setLayoutProperty('locations-line', 'visibility', 'none');
+		map.setLayoutProperty('slider', 'visibility', 'none');
 	}
 
 		if (layerId == 'locations') {
 		map.setLayoutProperty('locations', 'visibility', 'visible');
 		map.setLayoutProperty('locations-line', 'visibility', 'visible');
 		map.setLayoutProperty('heatmap', 'visibility', 'none');
-		map.setLayoutProperty('dates', 'visibility', 'none');
+		map.setLayoutProperty('dates-com', 'visibility', 'none');
+		map.setLayoutProperty('dates-nocom', 'visibility', 'none');
+		map.setLayoutProperty('slider', 'visibility', 'none');
+	}
+	
+		if (layerId == 'slider') {
+		map.setLayoutProperty('slider', 'visibility', 'visible');
+		map.setLayoutProperty('locations', 'visibility', 'none');
+		map.setLayoutProperty('locations-line', 'visibility', 'none');
+		map.setLayoutProperty('heatmap', 'visibility', 'none');
+		map.setLayoutProperty('dates-com', 'visibility', 'none');
+		map.setLayoutProperty('dates-nocom', 'visibility', 'none');
 	}
 }
 	
@@ -598,7 +736,7 @@ function closeNav() {
 	
 	
 	
-	map.on('click', 'dates', function (e) {
+	map.on('click', 'dates-com', function (e) {
 		var coordinates = e.features[0].geometry.coordinates.slice();
 		var description = e.features[0].properties.description;
  
@@ -616,12 +754,41 @@ function closeNav() {
 		});
  
 			// Change the cursor to a pointer when the mouse is over the places layer.
-		map.on('mouseenter', 'dates', function () {
+		map.on('mouseenter', 'dates-com', function () {
 		map.getCanvas().style.cursor = 'pointer';
 		});
  
 			// Change it back to a pointer when it leaves.
-		map.on('mouseleave', 'dates', function () {
+		map.on('mouseleave', 'dates-com', function () {
+		map.getCanvas().style.cursor = '';
+		});
+		
+		
+		
+		map.on('click', 'dates-nocom', function (e) {
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var description = e.features[0].properties.description;
+ 
+			// Ensure that if the map is zoomed out such that multiple
+			// copies of the feature are visible, the popup appears
+			// over the copy being pointed to.
+		while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+		coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+		}
+ 
+		new mapboxgl.Popup()
+		.setLngLat(coordinates)
+		.setHTML('<strong>Перше побачення</strong>' + '<p></p>' + '<strong>Рік: </strong>' + e.features[0].properties.year + '<p></p>' + '<strong>Вік: </strong>' + e.features[0].properties.age)
+		.addTo(map);
+		});
+ 
+			// Change the cursor to a pointer when the mouse is over the places layer.
+		map.on('mouseenter', 'dates-nocom', function () {
+		map.getCanvas().style.cursor = 'pointer';
+		});
+ 
+			// Change it back to a pointer when it leaves.
+		map.on('mouseleave', 'dates-nocom', function () {
 		map.getCanvas().style.cursor = '';
 		});
 		
