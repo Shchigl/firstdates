@@ -8,9 +8,7 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@200&display=swap" rel="stylesheet">
 
 
 
@@ -42,7 +40,7 @@
 
 	.link-btn .button {
 			background: url("https://raw.githubusercontent.com/shchigl/firstdates/48a21c510f303bb6051cf390e831965336d993f6/svg/form_map.svg") no-repeat center center;
-			font: bold 14px/20px PT Sans Caption;
+			font: bold 14px/20px Commissioner;
 			cursor: pointer;
 			color: black;
 			background-color: #ffffff;
@@ -62,7 +60,7 @@
 }
 
 	.link-btn .tooltiptext {
-			font: 12px/19px PT Sans Caption;
+			font: 12px/19px Commissioner;
 			visibility: hidden;
 			width: 145px;
 			background-color: rgba(85,85,85,0.75);
@@ -86,7 +84,7 @@
 
 	.fb-btn .button {
 			background: url("https://raw.githubusercontent.com/shchigl/firstdates/48a21c510f303bb6051cf390e831965336d993f6/svg/facebook.svg") no-repeat center center;
-			font: bold 14px/20px PT Sans Caption;
+			font: bold 14px/20px Commissioner;
 			cursor: pointer;
 			color: black;
 			background-color: #ffffff;
@@ -106,7 +104,7 @@
 }
 
 	.fb-btn .tooltiptext {
-			font: 12px/19px PT Sans Caption;
+			font: 12px/19px Commissioner;
 			visibility: hidden;
 			width: 128px;
 			background-color: rgba(85,85,85,0.75);
@@ -130,7 +128,7 @@
 
 	.inst-btn .button {
 			background: url("https://raw.githubusercontent.com/shchigl/firstdates/48a21c510f303bb6051cf390e831965336d993f6/svg/instagram.svg") no-repeat center center;
-			font: bold 14px/20px PT Sans Caption;
+			font: bold 14px/20px Commissioner;
 			cursor: pointer;
 			color: black;
 			background-color: #ffffff;
@@ -150,7 +148,7 @@
 }
 
 	.inst-btn .tooltiptext {
-			font: 12px/19px PT Sans Caption;
+			font: 12px/19px Commissioner;
 			visibility: hidden;
 			width: 135px;
 			background-color: rgba(85,85,85,0.75);
@@ -174,7 +172,7 @@
 
 	.page-btn .button {
 			background: url("https://raw.githubusercontent.com/shchigl/firstdates/48a21c510f303bb6051cf390e831965336d993f6/svg/globe.svg") no-repeat center center;
-			font: bold 14px/20px PT Sans Caption;
+			font: bold 14px/20px Commissioner;
 			cursor: pointer;
 			color: black;
 			background-color: #ffffff;
@@ -194,7 +192,7 @@
 }
 
 	.page-btn .tooltiptext {
-			font: 12px/19px PT Sans Caption;
+			font: 12px/19px Commissioner;
 			visibility: hidden;
 			width: 85px;
 			background-color: rgba(85,85,85,0.75);
@@ -225,7 +223,7 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 40px;
-  font: 14px/20px PT Sans Caption;
+  font: 14px/20px Commissioner;
 }
 
 .sidenav a {
@@ -261,7 +259,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font: 16px/19px PT Sans Caption;
+  font: 16px/19px Commissioner;
 }
 
 /* Hide the browser's default radio button */
@@ -323,21 +321,21 @@
 
 .sidenav h1 {
 margin: 0 50px 0px;
-font: bold 16px/35px PT Sans Caption;
+font: bold 16px/35px Commissioner;
 }
 
 .sidenav h3 {
 margin: 0 16px 0px;
-font: bold 16px/30px PT Sans Caption;
+font: bold 16px/30px Commissioner;
 }
 
 .sidenav h4 {
 margin: 0 16px 0px;
-font: 16px/22px PT Sans Caption;
+font: 16px/22px Commissioner;
 }
 
 .sidenav h2 {
-font: bold 16px/22px PT Sans Caption;
+font: bold 16px/22px Commissioner;
 margin: 0 50px 0;
 }
 
@@ -351,7 +349,7 @@ margin: 5px 50px 0;
 
 .sidenav h6 {
 margin: 0 0px 0px;
-font: 16px/22px PT Sans Caption;
+font: 16px/22px Commissioner;
 }
 
 </style>
@@ -362,7 +360,7 @@ font: 16px/22px PT Sans Caption;
 }
 
 .sidenav-btn .button {
-			font: bold 16px/20px PT Sans Caption;
+			font: bold 16px/20px Commissioner;
 			cursor: pointer;
 			color: #D8608E;
 			background-color: #ffffff;
@@ -815,7 +813,7 @@ function closeNav() {
  
 		new mapboxgl.Popup()
 		.setLngLat(e.lngLat)
-		.setHTML(e.features[0].properties.name.bold() + '<p></p>' + '<strong>Про місце: </strong>' + e.features[0].properties.name)
+		.setHTML(e.features[0].properties.name.bold() + '<p></p>' + '<strong>Про місце: </strong>' + e.features[0].properties.description)
 		.addTo(map);
 		});
  
